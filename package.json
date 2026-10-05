@@ -1,0 +1,9 @@
+{
+  "name": "like-a-hero-web",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "node tests/smoke.mjs && node tests/abilities.mjs && node tests/dom-init.mjs"
+  }
+}

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#1d3327" />
+  <title>Like A Hero — Web</title>
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="shell" aria-label="Like A Hero">
+    <canvas id="game" width="1280" height="720" aria-label="Jogo Like A Hero"></canvas>
+    <section id="hud" aria-live="polite">
+      <div id="top-left" class="hud-cluster">
+        <div id="character-name" class="character-name">ATIRADOR</div>
+        <div class="bar-card player-card">
+          <span class="bar-title">VIDA</span>
+          <div class="bar"><i id="player-health-fill"></i></div>
+          <span id="player-health-text" class="bar-value">5 / 5</span>
+        </div>
+        <div id="ammo-card" class="bar-card ammo-card hidden">
+          <span class="bar-title">MUNIÇÃO</span>
+          <div class="bar ammo"><i id="ammo-fill"></i></div>
+          <span id="ammo-text" class="bar-value">30 / 30</span>
+        </div>
+      </div>
+      <div id="top-center" class="boss-hud hidden">
+        <div id="boss-name" class="boss-name">RAIZ</div>
+        <div class="boss-bar"><i id="boss-health-fill"></i></div>
+      </div>
+      <div id="top-right" class="ability-grid">
+        <div class="ability" data-slot="shoot"><b>J</b><span>ATAQUE</span><i></i><em></em></div>
+        <div class="ability" data-slot="skill1"><b>K</b><span>SKILL 1</span><i></i><em></em></div>
+        <div class="ability" data-slot="skill2"><b>N</b><span>SKILL 2</span><i></i><em></em></div>
+        <div class="ability ultimate" data-slot="ultimate"><b>M</b><span>ULT</span><i></i><em></em></div>
+      </div>
+      <div id="blood-panel" class="blood-panel hidden"></div>
+      <div id="status" class="status"></div>
+      <div id="toast" class="toast hidden"></div>
+    </section>
+
+    <section id="character-screen" class="overlay visible">
+      <div class="panel character-panel">
+        <p class="eyebrow">ESCOLHA SEU HERÓI</p>
+        <h1>LIKE A HERO</h1>
+        <p class="sub">Boss rush procedural reconstruído para Web, sem runtime da Godot.</p>
+        <div id="character-cards" class="character-cards"></div>
+        <div class="controls-note">A/D ou ←/→ mover · W/↑/Espaço pular · J atacar · K/N skills · M ultimate · Shift dash · Esc pausa</div>
+      </div>
+    </section>
+
+    <section id="perk-screen" class="overlay">
+      <div class="panel perk-panel">
+        <p class="eyebrow">RECOMPENSA DE CHEFÃO</p>
+        <h2>ESCOLHA UM PERK</h2>
+        <div id="perk-cards" class="perk-cards"></div>
+        <p class="hint">Teclas 1, 2 ou 3 também escolhem.</p>
+      </div>
+    </section>
+
+    <section id="pause-screen" class="overlay dim">
+      <div class="panel pause-panel">
+        <p class="eyebrow">JOGO PAUSADO</p>
+        <h2>PAUSA</h2>
+        <p>Esc para voltar.</p>
+        <p class="hint">Segure Z por 3s para pular o encontro atual e ir ao mapa.</p>
+        <div class="skip-track"><i id="skip-fill"></i></div>
+      </div>
+    </section>
+
+    <section id="end-screen" class="overlay dim">
+      <div class="panel end-panel">
+        <p class="eyebrow">RUN ENCERRADA</p>
+        <h2 id="end-title">DERROTADO</h2>
+        <p id="end-copy">A horta ganhou. Humilhante, mas botanicamente impressionante.</p>
+        <button id="restart-button">RECOMEÇAR</button>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="src/game.js"></script>
+</body>
+</html>
